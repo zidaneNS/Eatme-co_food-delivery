@@ -1,0 +1,22 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name": "nasi goreng",
+            "description": "nasi yang digoreng",
+            "price": 12000
+        },
+        {
+            "id": "2",
+            "name": "nasi rebus",
+            "description": "nasi yang direbus",
+            "price": 11000
+        },
+        {
+            "id": "3",
+            "name": "nasi bakar",
+            "description": "nasi yang dibakar",
+            "price": 13000
+        }
+    ]
+}
