@@ -21,6 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .header {
@@ -31,11 +32,51 @@ body {
 
 header {
   display: flex;
-  flex-flow: row-reverse nowrap;
   background-color: #4b005a;
   gap: 2.5rem;
   padding: 0.5rem;
+  justify-content: space-between;
   align-items: center;
+}
+
+.order-info {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-right: 20px;
+  gap: 2rem;
+}
+
+.user-info .profile-pic {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: #808080;
+}
+
+.user-info {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  margin-left: 20px;
+}
+
+.logout-button {
+  background-color: #0048cf;
+  border: none;
+  color: inherit;
+  border-radius: 5px;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+.logout-button:hover, .logout-button:focus {
+  background-color: #1306cf;
 }
 
 .cart-info {
@@ -98,7 +139,7 @@ nav {
 }
 
 main {
-  margin-top: 90px;
+  margin-top: 120px;
   padding: 0 10%;
   margin-bottom: 60px;
   flex-grow: 1;
@@ -177,6 +218,7 @@ footer hr {
   border: none;
   color: inherit;
   padding: 0.2rem;
+  cursor: pointer;
 }
 
 .order-button:hover, .order-button:active {
@@ -248,4 +290,235 @@ footer hr {
 
 .submit-cart-button:hover {
   background-color: #1306cf;
+}
+
+.login-wrap {
+  background-color: hsla(0, 0%, 0%, 0.788);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  z-index: 1;
+}
+
+.login-page {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  border: 2px double #313131;
+  padding: 1.5rem;
+  background-color: #1b1b1b;
+  border-radius: 20px;
+  position: relative;
+}
+
+.login-page .input-form {
+  display: flex;
+  gap: 10px;
+  flex-flow: column nowrap;
+}
+
+.login-page h1 {
+  border-bottom: 2px solid #313131;
+  padding: 0.5rem;
+}
+
+.login-page .input-form input {
+  font: inherit;
+  padding: 0.4rem;
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+}
+
+.sign-button {
+  color: white;
+  background-color: #0048cf;
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: none;
+}
+
+.sign-button:hover, .sign-button:focus {
+  background-color: transparent;
+  border: 2px solid #444;
+}
+
+.login-page .option {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 6px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.login-page .option button {
+  background-color: #444444;
+}
+
+.login-page .option button:hover, .login-page .option button:focus {
+  background-color: transparent;
+  border: 2px solid #444444;
+}
+
+.login-page .close-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 2.5rem;
+  transform: translateX(-45px) translateY(-10px);
+  background-color: transparent;
+  color: #f1f1f1;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 20%;
+}
+
+.login-page .close-button:hover, .login-page .close-button:focus {
+  border: 2px solid #444;
+}
+
+.off-screen {
+  position: absolute;
+  left: -9999999;
+}
+
+.error {
+  background-color: #f7e0e088;
+  color: red;
+  padding: 0.4rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* Loading comp */
+/* From Uiverse.io by alexruix */ 
+.loader {
+  width: 80px;
+  height: 50px;
+  position: relative;
+}
+
+.loader-text {
+  position: absolute;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  color: #C8B6FF;
+  animation: text_713 3.5s ease both infinite;
+  font-size: .8rem;
+  letter-spacing: 1px;
+}
+
+.load {
+  background-color: #9A79FF;
+  border-radius: 50px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  bottom: 0;
+  position: absolute;
+  transform: translateX(64px);
+  animation: loading_713 3.5s ease both infinite;
+}
+
+.load::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #D1C2FF;
+  border-radius: inherit;
+  animation: loading2_713 3.5s ease both infinite;
+}
+
+@keyframes text_713 {
+  0% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+
+  40% {
+    letter-spacing: 2px;
+    transform: translateX(26px);
+  }
+
+  80% {
+    letter-spacing: 1px;
+    transform: translateX(32px);
+  }
+
+  90% {
+    letter-spacing: 2px;
+    transform: translateX(0px);
+  }
+
+  100% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes loading_713 {
+  0% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+
+  40% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+
+  80% {
+    width: 16px;
+    transform: translateX(64px);
+  }
+
+  90% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+
+  100% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes loading2_713 {
+  0% {
+    transform: translateX(0px);
+    width: 16px;
+  }
+
+  40% {
+    transform: translateX(0%);
+    width: 80%;
+  }
+
+  80% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+
+  90% {
+    width: 80%;
+    transform: translateX(15px);
+  }
+
+  100% {
+    transform: translateX(0px);
+    width: 16px;
+  }
 }

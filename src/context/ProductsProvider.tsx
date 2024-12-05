@@ -1,37 +1,46 @@
-import { createContext, useState, ReactElement, useEffect } from "react"
+import { createContext, useState, ReactElement, useEffect } from "react";
+import axios from "../api/axios";
+import { AxiosResponse } from "axios";
 
 export type ProductType = {
     id: string,
     name: string,
     description: string,
     price: number
-}
+};
 
-const initState: ProductType[] = []
+const initState: ProductType[] = [];
 
-export type UseProductsContextType = { products: ProductType[]}
+export type UseProductsContextType = { products: ProductType[]};
 
-const initContextState: UseProductsContextType = { products: [] }
+const initContextState: UseProductsContextType = { products: [] };
 
-const ProductsContext = createContext<UseProductsContextType>(initContextState)
+const ProductsContext = createContext<UseProductsContextType>(initContextState);
 
 export type ChildrenType = {
     children?: ReactElement | ReactElement[]
 }
 
 export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
-    const [products, setProducts] = useState<ProductType[]>(initState)
+    const [products, setProducts] = useState<ProductType[]>(initState);
 
     useEffect(() => {
-        const fetchProducts = async (): Promise<ProductType[]> => {
-            const data = fetch('http://localhost:3000/products').then(res => res.json()).catch(err => {
-                if (err instanceof Error) console.log(err.message)
-            })
-
-            return data
+        const getProducts = async (): Promise<void> => {
+            try {
+                const response: AxiosResponse = await axios.get('/food');
+                console.log(response.data.data);
+            
+                const data: ProductType[] = response.data.data;
+                
+                setProducts(data);
+            } catch (err) {
+                console.error(err);
+            }
         }
 
-        fetchProducts().then(products => setProducts(products))
+        return () => {
+            getProducts();
+        }
     }, [])
 
     return (

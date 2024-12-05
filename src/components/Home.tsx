@@ -1,12 +1,25 @@
-import useProducts from "../hooks/useProducts"
-import useCart from "../hooks/useCart"
-import { ProductType } from "../context/ProductsProvider"
+import { Dispatch, SetStateAction } from "react";
+import useProducts from "../hooks/useProducts";
+import useCart from "../hooks/useCart";
+import useAuth from "../hooks/useAuth";
+import { ProductType } from "../context/ProductsProvider";
 
-const Home = () => {
-  const { products } = useProducts()
-  const { dispatch, REDUCER_ACTIONS } = useCart()
+type HomePropsType = {
+  setIsAuth: Dispatch<SetStateAction<boolean>>
+}
 
-  const addItem = (product: ProductType): void => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { id: product.id, name: product.name, price: product.price, qty: 1 } })
+const Home = ({ setIsAuth }: HomePropsType) => {
+  const { products } = useProducts();
+  const { auth } = useAuth();
+  const { dispatch, REDUCER_ACTIONS } = useCart();
+
+  const addItem = (product: ProductType): void => {
+    if (auth.roles === 'guest') {
+      setIsAuth(true);
+    } else {
+      dispatch({ type: REDUCER_ACTIONS.ADD, payload: { id: product.id, name: product.name, price: product.price, qty: 1 } });
+    }
+  }
   return (
     <main className="home">
       <h2>Please Order</h2>
