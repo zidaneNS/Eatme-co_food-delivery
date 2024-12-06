@@ -19,7 +19,8 @@ npm run dev
 ```
 
 ## Preview
-* ![Place cart](https://github.com/user-attachments/assets/d82b987e-6cbe-4868-b9e2-658a088a5eab)
-* ![Home Page](https://github.com/user-attachments/assets/594ed037-1dce-4bd4-b599-a28314c1f6b9)
 
-https://github.com/user-attachments/assets/292465bf-70ed-4b8b-8bfc-cb65874b7c0c
+https://github.com/user-attachments/assets/67e9a21a-883e-48d2-ac6b-39415053b998
+
+
+
